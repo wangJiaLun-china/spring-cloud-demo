@@ -11,3 +11,8 @@ eureka:
     register-with-eureka: false
     #是否从Eureka-Server中获取服务注册信息，默认为true
     fetch-registry: false
+  server:
+    # 服务自保机制，默认开启
+    enable-self-preservation: true
+    # 每隔多久触发一次服务剔除（单位ms毫秒）
+    eviction-interval-timer-in-ms: 10000
