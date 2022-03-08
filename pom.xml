@@ -13,6 +13,7 @@
         <module>eureka-consumer</module>
         <module>eureka-server-peer</module>
         <module>ribbon/ribbon-consumer</module>
+        <module>feign/feign-consumer</module>
     </modules>
 
     <properties>
