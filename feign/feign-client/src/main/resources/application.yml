@@ -1,8 +1,8 @@
 spring:
   application:
-    name: feign-consumer
+    name: feign-client
 server:
-  port: 22000
+  port: 22001
 eureka:
   client:
     service-url:
@@ -14,16 +14,3 @@ eureka:
     lease-expiration-duration-in-seconds: 5
     # 如果30秒内，依然没有收到续约请求，判断服务过期
     lease-renewal-interval-in-seconds: 30
-
-feign-client:
-  ribbon:
-    # 每台机器最大重试次数
-    MaxAutoRetries: 2
-    # 可以再重试几台机器
-    MaxAutoRetriesNextServer: 2
-    # 连接超时
-    ConnectTimeout: 1000
-    #  业务处理超时
-    ReadTimeout: 2000
-    # 在所有HTTP Method 进行重试
-    OkToRetryOnAllOperations: true
