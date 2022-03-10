@@ -33,4 +33,9 @@ public class Controller implements IService{
         log.info("retry");
         return port;
     }
+
+    @Override
+    public String error() {
+        throw new RuntimeException("error");
+    }
 }
