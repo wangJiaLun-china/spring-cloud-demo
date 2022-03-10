@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: hystrix-turbine
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 25002
+turbine:
+  # 指定监控的服务名
+  app-config: hystrix-fallback
+  cluster-name-expression: "default"
+  combine-host-port: true
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka/
+      # 注册多个eureka以逗号分割
+#      defaultZone: http://peer1:20000/eureka/, http://peer2:30000/eureka/
+  instance:
+    # 每间隔5秒钟，向服务中心发送一条续约指令
+    lease-expiration-duration-in-seconds: 5
+    # 如果30秒内，依然没有收到续约请求，判断服务过期
+    lease-renewal-interval-in-seconds: 30
