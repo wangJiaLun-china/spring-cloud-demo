@@ -3,6 +3,7 @@ package com.wjl.springcloud.hystrix;
 import com.wjl.springcloud.MyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author wangJiaLun
@@ -20,13 +21,14 @@ public class Fallback implements MyService {
     }
 
     @Override
+    public String retry(@RequestParam(name = "timeout") Integer timeout) {
+        return "late";
+    }
+
+    @Override
     public String sayHi() {
         return null;
     }
 
-    @Override
-    public String retry(Integer timeout) {
-        return null;
-    }
 
 }
