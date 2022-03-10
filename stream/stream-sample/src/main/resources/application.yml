@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: stream-sample
+  rabbitmq:
+    host: 124.222.101.146
+    port: 5672
+    username: admin
+    password: 123456
+server:
+  port: 30001
