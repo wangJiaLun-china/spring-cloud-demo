@@ -1,5 +1,6 @@
 package com.wjl.springcloud.hystrix;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.wjl.springcloud.MyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -13,11 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Component
 public class Fallback implements MyService {
 
-
     @Override
+    @HystrixCommand(fallbackMethod = "fallback2")
     public String error() {
         log.error("服务调用失败");
-        return "123456";
+        throw new RuntimeException("first fallback");
+    }
+
+    @HystrixCommand(fallbackMethod = "fallback3")
+    public String fallback2(){
+        log.info("fallback again 2");
+        throw new RuntimeException("fallback again2");
+    }
+
+    public String fallback3(){
+        log.info("fallback again 3");
+        return "success";
     }
 
     @Override
